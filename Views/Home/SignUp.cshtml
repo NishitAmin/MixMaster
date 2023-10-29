@@ -1,0 +1,54 @@
+﻿@model Mix_Master.Models.TBLUserInfo
+
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+<head>
+    <link rel="stylesheet" href="~/wwwroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/wwwroot/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/wwwroot/css/-Login-form-Page-BS4--Login-form-Page-BS4.css">
+    <script src="~/wwwroot/js/jquery.min.js"></script>
+    <script src="~/wwwroot/js/bootstrap.min.js"></script>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body>
+        <div class="container-fluid">
+            <div class="row mh-100vh">
+                <div class="col-10 col-sm-8 col-md-6 col-lg-6 offset-1 offset-sm-2 offset-md-3 offset-lg-0 align-self-center d-lg-flex align-items-lg-center align-self-lg-stretch bg-white p-5 rounded rounded-lg-0 my-5 my-lg-0" id="login-block">
+                    <div class="m-auto w-lg-75 w-xl-50">
+                        <h2 class="text-info fw-light mb-5">&nbsp;Register</h2>
+                        <form>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(model => model.UsernameUs, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.UsernameUs, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UsernameUs, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(model => model.PasswordUs, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.PasswordUs, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PasswordUs, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(model => model.RePasswordUs, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.RePasswordUs, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RePasswordUs, "", new { @class = "text-danger" })
+                            </div>
+                            <button class="btn btn-info mt-2" type="submit">Log In</button>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <label>@ViewBag.Notification</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-end" id="bg-block" style="background-image: url(../../wwwroot/images/aldain-austria-316143-unsplash.jpg); background-size: cover; background-position: center center; "></div>
+            </div>
+        </div>
+    </body>
+}
