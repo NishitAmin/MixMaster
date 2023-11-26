@@ -10,8 +10,8 @@ namespace Mix_Master.Controllers
 {
     public class HomeController : Controller
     {
-        MixMasterEntities db = new MixMasterEntities();
-        // GET: Home
+        userdbEntities db = new userdbEntities();
+
         public ActionResult Index()
         {
             return View(db.TBLUserInfoes.ToList());
@@ -38,7 +38,7 @@ namespace Mix_Master.Controllers
         [HttpPost]
         public ActionResult SignUp(TBLUserInfo tBLUserInfo)
         {
-            if(db.TBLUserInfoes.Any(x => x.UsernameUs == tBLUserInfo.UsernameUs))
+            if (db.TBLUserInfoes.Any(x => x.UsernameUs == tBLUserInfo.UsernameUs))
             {
                 ViewBag.Notification = "Account already exists";
                 return View();
@@ -68,7 +68,7 @@ namespace Mix_Master.Controllers
                     }
                     throw;
                 }
-                
+
             }
         }
 
@@ -89,7 +89,7 @@ namespace Mix_Master.Controllers
         public ActionResult Login(TBLUserInfo tBLUserInfo)
         {
             var checkLogin = db.TBLUserInfoes.Where(x => x.UsernameUs.Equals(tBLUserInfo.UsernameUs) && x.PasswordUs.Equals(tBLUserInfo.PasswordUs)).FirstOrDefault();
-            if(checkLogin != null)
+            if (checkLogin != null)
             {
                 Session["IdUsSS"] = tBLUserInfo.IdUs.ToString();
                 Session["UsernameSS"] = tBLUserInfo.UsernameUs.ToString();
@@ -97,7 +97,7 @@ namespace Mix_Master.Controllers
             }
             else
             {
-                ViewBag.Notification = "Wrond Username Or Password";
+                ViewBag.Notification = "Wrong Username Or Password";
             }
             return View();
         }
