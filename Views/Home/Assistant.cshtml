@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Mix_Master.Models.TBLUserInfo>
+
+@{
+    ViewBag.Title = "Index";
+    var cocktail = ViewBag.OpenAIResponse as string;
+}
+
+<body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/wwwroot/images/bg.jpg');">
+    <br /><br />
+    <h1 class="text-center text-white">Cocktail Assistant</h1><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-white">@ViewBag.OpenAIResponse</p>
+            </div>
+        </div><br /><br />
+        <a class="btn-sm btn-primary" href="@Url.Action("Assistant", "Home")">Generate New Cocktail</a>
+        <a class="btn-sm btn-primary" href="@Url.Action("AddFavorite", "Home", new { recipe = cocktail })">Add to Favorites</a>
+    </div><br /><br /><br />
+    <footer class="text-center footer text-faded py-5">
+        <div class="container">
+            <p class="m-0 small">Copyright&nbsp;©&nbsp;MixMaster 2023</p>
+        </div>
+    </footer>
+    <script src="~/wwwroot/js/jquery.min.js"></script>
+    <script src="~/wwwroot/js/bootstrap.min.js"></script>
+    <script src="~/wwwroot/js/current-day.js"></script>
+</body>

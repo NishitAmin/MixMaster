@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Mix_Master.Models.Drink>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/wwwroot/images/bg.jpg');">
+    <br /><br />
+    <h1 class="text-center text-white">Add drinks</h1><br />
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-auto my-auto">
+                <label for="dropdownMenuButton" class="form-label text-white">Add a Drink:</label>
+            </div>
+            <div class="col-md-auto">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Drink
+                    </button>
+                    <div class="dropdown-menu scrollable-dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <input type="text" class="form-control" id="dropdownSearch" placeholder="Search...">
+                        @foreach (var drink in Model)
+                        {
+                            <a class="dropdown-item dropdown-link">@drink.Name</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                @using (Html.BeginForm("Shelf_Drink", "Home", FormMethod.Post, new { id = "drinkForm" }))
+                {
+                    <input type="hidden" name="name" id="selectedDrinkName" />
+                    <button type="submit" class="btn btn-primary">Add Drink</button>
+                }
+            </div>
+        </div>
+    </div>
+    <br><br /><br><br />
+    <footer class="text-center footer text-faded py-5">
+        <div class="container">
+            <p class="m-0 small">Copyright&nbsp;©&nbsp;MixMaster 2023</p>
+        </div>
+    </footer>
+    <script src="~/wwwroot/js/jquery.min.js"></script>
+    <script src="~/wwwroot/js/bootstrap.min.js"></script>
+    <script src="~/wwwroot/js/current-day.js"></script>
+</body>
+
+<script>
+$(document).ready(function () {
+        $("#dropdownSearch").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".dropdown-menu a").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+        $(".dropdown-link").click(function () {
+            var selectedText = $(this).text();
+            $("#dropdownMenuButton").text(selectedText);
+            $("#selectedDrinkName").val(selectedText);
+        });
+});
+</script>
+<style>
+    .scrollable-dropdown-menu {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Full viewport height */
+    }
+
+    footer {
+        margin-top: auto; /* Pushes the footer to the bottom */
+    }
+</style>
