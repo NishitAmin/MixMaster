@@ -15,6 +15,7 @@
                     <tr>
                         <th scope="col" class="text-white">Name</th>
                         <th scope="col" class="text-white">Type</th>
+                        <th scope="col" class="text-white"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,14 @@
                         <tr>
                             <td class="text-white">@drink.DrinkName</td>
                             <td class="text-white">@drink.DrinkType</td>
+                            <td class="text-white">
+                                <form method="post" action="@Url.Action("DeleteDrink", "Home")">
+                                    <input type="hidden" name="name" value="@drink.DrinkName" />
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>

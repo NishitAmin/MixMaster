@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/wwwroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;display=swap">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">@Html.ActionLink("MixMaster", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" @Html.ActionLink("Store", "Store", "Home") </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" @Html.ActionLink("Products", "Products", "Home") </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" @Html.ActionLink("About", "About", "Home") </a>
+                </li>
+            </ul>
+            @*<div collapse navbar-collapse justify-content-end>
+                <ul class="navbar-nav mr-auto">
+                    @if (Session["UsernameSS"] != null)
+                    {
+                        <li class="nav-item active">
+                            @Html.ActionLink("Sign Up", "SignUp", "Home")
+                        </li>
+                        <li class="nav-item active">
+                            @Html.ActionLink("Login", "Login", "Home")
+                        </li>
+                    }
+                </ul>
+            </div>*@
+        <div class="text-white navbar-collapse justify-content-end" id="navbarSupportedContent">
+            @if (Session["UsernameSS"] != null)
+            {
+                <div class="nav-link" style="color:#ffffff;">@Session["UsernameSS"]</div>
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Home", "Users", "Home")</div>
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Shelf", "Shelf", "Home")</div>
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Assistant", "Assistant", "Home")</div>
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Favorite", "Favorite", "Home")</div>
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Logout", "Logout", "Home")</div>
+            }
+            else
+            {
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Register", "SignUp", "Home")</div>
+                <div class="nav-link" style="color:#ffffff;">@Html.ActionLink("Login", "Login", "Home")</div>
+            }
+        </div>
+        </div>
+    </nav>
+    @*<div class="navbar-header">
+                    @Html.ActionLink("MixMaster", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Products", "Products", "Home")</li>
+                            <li>@Html.ActionLink("Store", "Store", "Home")</li>
+                        </ul>
+
+                        <ul class="nav navbar-nav" style="float:right !important">
+                            @if (Session["UsernameSS"] != null)
+                            {
+                                <li><p style="color:#ffffff;">Hello @Session["UsernameSS"]</p></li>
+                                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("SignUp", "SignUp", "Home")</li>
+                                <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+        </div>*@
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

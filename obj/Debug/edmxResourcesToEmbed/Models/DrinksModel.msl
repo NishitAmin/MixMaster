@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="userdbDrinksModelStoreContainer" CdmEntityContainer="userdbEntitiesDrinks">
+    <EntitySetMapping Name="Drinks">
+      <EntityTypeMapping TypeName="userdbDrinksModel.Drink">
+        <MappingFragment StoreEntitySet="Drinks">
+          <ScalarProperty Name="DrinkName" ColumnName="DrinkName" />
+          <ScalarProperty Name="DrinkType" ColumnName="DrinkType" />
+          <ScalarProperty Name="DrinkID" ColumnName="DrinkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

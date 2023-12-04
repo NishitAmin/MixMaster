@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,13 @@ namespace Mix_Master.Models
 
             UserDrinks.InsertOne(shelf_Drinks);
         }
+
+        public void DeleteUserDrink(string username, string drinkName)
+        {
+            var filter = Builders<Shelf_Drinks>.Filter.Where(x => x.Username == username && x.DrinkName == drinkName);
+            UserDrinks.DeleteOne(filter);
+        }
+
         public IMongoCollection<Favorite> Favorites => _database.GetCollection<Favorite>("Favorites");
 
         public void InsertUserFav(string username, string recipe)
@@ -42,5 +50,11 @@ namespace Mix_Master.Models
 
             Favorites.InsertOne(userFavorite);
         }
+
+        //public void DeleteUserFavorite(string username, string recipe)
+        //{
+        //    var filter = Builders<Favorite>.Filter.Where(x => x.Username == username && x.Recipe == recipe);
+        //    Favorites.DeleteOne(filter);
+        //}
     }
 }

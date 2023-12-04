@@ -149,14 +149,21 @@ namespace Mix_Master.Controllers
                 string sessionUsername = Session["UsernameSS"].ToString();
                 var drinks = _dbContext.UserDrinks.Find(drink => drink.Username == sessionUsername).ToList();
                 var distinctDrinks = drinks.GroupBy(drink => drink.DrinkName).Select(group => group.First()).ToList();
-                string prompt = "Please generate a unique cocktail recipe using only these specific alcohols: " + distinctDrinks + ". Ensure the recipe is safe for consumption and creatively name the cocktail. Format your response as follows: 'New Drink Name - List of Ingredients'.";
+                List<string> drinks_all = new List<string>();
+                foreach (var drink in distinctDrinks)
+                {
+                    drinks_all.Add(drink.DrinkName);
+
+                }
+                string.Join(",", drinks_all.ToString());
+                string prompt = "Please make me a cocktail. I have these " + string.Join(", ", drinks_all) + " alcohol drinks only with me. I have pop sodas and fruits etc. for the cocktail. Ensure the recipe is safe for consumption and creatively name the cocktail. Format your response as follows: 'New Drink Name - List of Ingredients'.";
                 var openAIResponse = await GetOpenAIResponse(prompt);
                 ViewBag.OpenAIResponse = openAIResponse;
                 return View();
             }
             else
             {
-                return RedirectToAction("Login"); // Or whatever your login action is
+                return RedirectToAction("Login"); 
             }
         }
 
@@ -171,7 +178,7 @@ namespace Mix_Master.Controllers
             }
             else
             {
-                return RedirectToAction("Login"); // Or whatever your login action is
+                return RedirectToAction("Login"); 
             }
         }
 
@@ -207,6 +214,20 @@ namespace Mix_Master.Controllers
                 };
 
                 _dbContext.UserDrinks.InsertOne(add_drink);
+                return RedirectToAction("Shelf", "Home");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult DeleteDrink(string name)
+        {
+            if (Session["UsernameSS"] != null)
+            {
+                var username = Session["UsernameSS"].ToString();
+                _dbContext.DeleteUserDrink(username, name);
                 return RedirectToAction("Shelf", "Home");
             }
             else
