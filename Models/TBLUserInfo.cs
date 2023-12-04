@@ -32,7 +32,7 @@ namespace Mix_Master.Models
         public string PasswordUs { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "RePassword")]
+        [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [Compare("PasswordUs", ErrorMessage ="Confirm password doesn't match, type again!!")]
         public string RePasswordUs { get; set; }

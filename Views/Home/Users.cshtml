@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Mix_Master.Models.TBLUserInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/wwwroot/images/bg.jpg');">
+    <br /><br />
+    <h1 class="text-center text-white">Welcome</h1><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="@Url.Action("Shelf", "Home")">
+                    <div class="card">
+                        <img class="card-img-top card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh3iF6JazWY1cb4w2cRsRfaeH0R3O38-D0vQ&usqp=CAU" alt="Shelf Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Shelf</h5>
+                            <p class="card-text">Manage and review your unique drink collection</p>
+                            <a href="@Url.Action("Shelf", "Home")">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="@Url.Action("Assistant", "Home")">
+                    <div class="card">
+                        <img class="card-img-top card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsuDMlVino_ONTH51eJARlWXNHeUDugVMM-nn8uYKaRc-ZuyeTGZhGDmLaP4PW6Mm-UGI&usqp=CAU" alt="Assistant Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Assistant</h5>
+                            <p class="card-text">Your ultimate guide for crafting perfect drinks every time</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="@Url.Action("Favorite", "Home")">
+                    <div class="card">
+                        <img class="card-img-top card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBpIASxhTc62OaqBVD5WPRYiA408Hsfm8Ucg&usqp=CAU" alt="Favorite Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Favorite</h5>
+                            <p class="card-text">Personalized collection of your most cherished beverage selections</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div><br /><br />
+    <footer class="text-center footer text-faded py-5">
+        <div class="container">
+            <p class="m-0 small">Copyright&nbsp;©&nbsp;MixMaster 2023</p>
+        </div>
+    </footer>
+    <script src="~/wwwroot/js/jquery.min.js"></script>
+    <script src="~/wwwroot/js/bootstrap.min.js"></script>
+    <script src="~/wwwroot/js/current-day.js"></script>
+</body>
+<style>
+    .card-img-top {
+        width: 100%; /* Makes the image fill the card width */
+        height: 200px; /* Fixed height */
+        object-fit: cover; /* Ensures the image covers the area without stretching */
+    }
+</style>
