@@ -2,7 +2,7 @@
     ViewBag.Title = "Index";
 }
 
-<body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/wwwroot/images/bg.jpg');">
+<body style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('https://i.ibb.co/jZwF1Zx/bg.jpg');">
     <br /><br />
     <h1 class="text-center text-white">My Shelf</h1><br />
     <div class="container">
@@ -15,6 +15,7 @@
                     <tr>
                         <th scope="col" class="text-white">Name</th>
                         <th scope="col" class="text-white">Type</th>
+                        <th scope="col" class="text-white"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,14 @@
                         <tr>
                             <td class="text-white">@drink.DrinkName</td>
                             <td class="text-white">@drink.DrinkType</td>
+                            <td class="text-white">
+                                <form method="post" action="@Url.Action("DeleteDrink", "Home")">
+                                    <input type="hidden" name="name" value="@drink.DrinkName" />
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>

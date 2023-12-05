@@ -72,7 +72,7 @@ namespace Mix_Master.Controllers
 
                     Session["IdUsSS"] = tBLUserInfo.IdUs.ToString();
                     Session["UsernameSS"] = tBLUserInfo.UsernameUs.ToString();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Home");
                 }
                 catch (DbEntityValidationException e)
                 {

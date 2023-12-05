@@ -373,6 +373,8 @@
     </Content>
     <Content Include="libmongocrypt.so" />
     <Content Include="libmongocrypt.dylib" />
+    <None Include="Properties\PublishProfiles\MixMaster - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MixMaster - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
