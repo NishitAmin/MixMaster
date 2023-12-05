@@ -22,7 +22,7 @@ namespace Mix_Master.Models
         public string UName { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "Username")]
+        [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string UsernameUs { get; set; }
 
